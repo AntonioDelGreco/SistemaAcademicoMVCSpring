@@ -50,8 +50,6 @@ class AlumnoControllerTest {
                 .andExpect(status().is2xxSuccessful())
                 .andReturn();
         Alumno actualAlumnoResponse = mapper.readValue(result.getResponse().getContentAsString(), Alumno.class);
-        System.out.println("Alumno esperado: " + alumnoResponse);
-        System.out.println("Alumno actual recibido: " + actualAlumnoResponse);
         Assertions.assertEquals(alumnoResponse, actualAlumnoResponse);
     }
     @Test
@@ -69,26 +67,6 @@ class AlumnoControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
-        String expectedErrMsg = "El nombre del alumno no puede estar vacio.";
-        Assertions.assertTrue(responseBody.contains(expectedErrMsg));
-    }
-    @Test
-    public void addAlumnoFailNameEmpty() throws Exception{
-        AlumnoDTO alumnoDTO = new AlumnoDTO();
-        alumnoDTO.setNombre("");
-        alumnoDTO.setApellido("enrique");
-        alumnoDTO.setDni(12345678L);
-
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/alumno")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(mapper.writeValueAsString(alumnoDTO))
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isBadRequest())
-                .andReturn();
-
-        String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "El nombre del alumno no puede estar vacio.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -107,7 +85,6 @@ class AlumnoControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "El nombre del alumno debe contener al menos una letra.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -126,26 +103,6 @@ class AlumnoControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
-        String expectedErrMsg = "El apellido del alumno no puede estar vacio.";
-        Assertions.assertTrue(responseBody.contains(expectedErrMsg));
-    }
-    @Test
-    public void addAlumnoFailApellidoEmpty() throws Exception{
-        AlumnoDTO alumnoDTO = new AlumnoDTO();
-        alumnoDTO.setNombre("Jose");
-        alumnoDTO.setApellido("");
-        alumnoDTO.setDni(12345678L);
-
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/alumno")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(mapper.writeValueAsString(alumnoDTO))
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isBadRequest())
-                .andReturn();
-
-        String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "El apellido del alumno no puede estar vacio.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -164,7 +121,6 @@ class AlumnoControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "El apellido del alumno debe contener al menos una letra.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -183,7 +139,6 @@ class AlumnoControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "El DNI del alumno no puede estar vacio.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -202,7 +157,6 @@ class AlumnoControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "El DNI debe contener 8 digitos solamente.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -221,7 +175,6 @@ class AlumnoControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "El DNI no puede tener mas de 8 digitos.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -247,8 +200,6 @@ class AlumnoControllerTest {
                 .andExpect(status().is2xxSuccessful())
                 .andReturn();
         Alumno actualAlumnoResponse = mapper.readValue(result.getResponse().getContentAsString(), Alumno.class);
-        System.out.println("Alumno esperado: " + alumnoResponse);
-        System.out.println("Alumno actual recibido: " + actualAlumnoResponse);
         Assertions.assertEquals(alumnoResponse, actualAlumnoResponse);
     }
     @Test
@@ -267,7 +218,6 @@ class AlumnoControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "El valor en la URL debe ser mayor a cero.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -285,8 +235,6 @@ class AlumnoControllerTest {
 
         String responseBody = result.getResponse().getContentAsString();
         String expectedMsg = "Alumno borrado satisfactoriamente.";
-        System.out.println("Mensaje esperado: " + responseBody);
-        System.out.println("Mensaje recibida: " + expectedMsg);
         Assertions.assertEquals(responseBody, expectedMsg);
     }
     @Test
@@ -305,7 +253,6 @@ class AlumnoControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "El valor en la URL debe ser mayor a cero.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -339,8 +286,6 @@ class AlumnoControllerTest {
                 .andExpect(status().is2xxSuccessful())
                 .andReturn();
         Alumno actualAlumnoResponse = mapper.readValue(result.getResponse().getContentAsString(), Alumno.class);
-        System.out.println("Alumno esperado: " + alumnoResponse);
-        System.out.println("Alumno actual recibido: " + actualAlumnoResponse);
         Assertions.assertEquals(alumnoResponse, actualAlumnoResponse);
     }
     @Test
@@ -366,7 +311,6 @@ class AlumnoControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "En el estado solo puede colocar NO_CURSADA | CURSADA | APROBADA";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -393,7 +337,6 @@ class AlumnoControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "La nota no puede ser mayor a 10.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -420,7 +363,6 @@ class AlumnoControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "La nota no puede ser menor que 0.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }

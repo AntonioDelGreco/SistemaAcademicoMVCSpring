@@ -16,13 +16,13 @@ public class AlumnoServiceImpl implements AlumnoService{
 
     @Override
     public Alumno addAlumno(AlumnoDTO alumnoDTO) throws SaveException {
-        Alumno a = alumnoDTOTOAlumno(alumnoDTO);
+        Alumno a = alumnoDTOToAlumno(alumnoDTO);
         return dao.save(a);
     }
 
     @Override
     public Alumno updateAlumno(Integer idAlumno, AlumnoDTO alumnoDTO) throws NotFoundException {
-        Alumno a = alumnoDTOTOAlumno(alumnoDTO);
+        Alumno a = alumnoDTOToAlumno(alumnoDTO);
         return dao.findAndUpdateAlumno(idAlumno, a);
     }
 
@@ -36,7 +36,7 @@ public class AlumnoServiceImpl implements AlumnoService{
         return dao.findAndUpdateAsignatura(idAlumno, idAsignatura, estado, nota);
     }
 
-    private Alumno alumnoDTOTOAlumno(AlumnoDTO alumnoDTO){
+    private Alumno alumnoDTOToAlumno(AlumnoDTO alumnoDTO){
         Alumno a = new Alumno();
         a.setNombre(alumnoDTO.getNombre());
         a.setApellido(alumnoDTO.getApellido());

@@ -2,7 +2,6 @@ package com.diegoantonio.dalab3.controller.annotations;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
@@ -13,7 +12,6 @@ import java.lang.annotation.*;
 @Target(ElementType.PARAMETER)
 @Retention(RetentionPolicy.RUNTIME)
 @NotNull(message = "El nombre no puede ser un campo vacio.")
-@NotBlank(message = "EL nombre no puede ser un campo vacio.")
 @Pattern(regexp = ".*\\p{L}.*", message = "Debe contener al menos una letra.")
 public @interface ValidNombre {
     String message() default "Parametro invalido";

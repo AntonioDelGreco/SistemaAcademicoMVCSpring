@@ -51,8 +51,6 @@ class CarreraControllerTest {
                 .andExpect(status().is2xxSuccessful())
                 .andReturn();
         Carrera actualCarreraResponse = mapper.readValue(result.getResponse().getContentAsString(), Carrera.class);
-        System.out.println("Carrera esperada: " + carreraResponse);
-        System.out.println("Carrera actual recibida: " + actualCarreraResponse);
         Assertions.assertEquals(carreraResponse, actualCarreraResponse);
     }
     @Test
@@ -70,7 +68,6 @@ class CarreraControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Recibido: " + responseBody);
         String expectedErrMsg = "El nombre de la carrera no puede ser un espacio vacio.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -89,7 +86,6 @@ class CarreraControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Recibido: " + responseBody);
         String expectedErrMsg = "El nombre de la carrera debe contener al menos una letra.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -108,7 +104,6 @@ class CarreraControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Recibido: " + responseBody);
         String expectedErrMsg = "El departamento no puede ser un valor vacio.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -127,7 +122,6 @@ class CarreraControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Recibido: " + responseBody);
         String expectedErrMsg = "El departamento debe ser mayor o igual a 1.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -146,7 +140,6 @@ class CarreraControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Recibido: " + responseBody);
         String expectedErrMsg = "La cantidad de cuatrimestres que tiene la carrera no puede estar vacio.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -165,7 +158,6 @@ class CarreraControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Recibido: " + responseBody);
         String expectedErrMsg = "La cantidad de cuatrimestres que tiene la carrera debe ser de por lo menos 4.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -191,8 +183,6 @@ class CarreraControllerTest {
                 .andExpect(status().is2xxSuccessful())
                 .andReturn();
         Carrera actualCarreraResponse = mapper.readValue(result.getResponse().getContentAsString(), Carrera.class);
-        System.out.println("Carrera esperada: " + carreraResponse);
-        System.out.println("Carrera actual recibida: " + actualCarreraResponse);
         Assertions.assertEquals(carreraResponse, actualCarreraResponse);
     }
     @Test
@@ -211,7 +201,6 @@ class CarreraControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Mensaje esperado: " + responseBody);
         String expectedErrMsg = "El valor en la URL debe ser mayor a cero.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -229,8 +218,6 @@ class CarreraControllerTest {
 
         String responseBody = result.getResponse().getContentAsString();
         String expectedMsg = "La carrera fue borrada satisfactoriamente.";
-        System.out.println("Mensaje esperado: " + responseBody);
-        System.out.println("Mensaje recibida: " + expectedMsg);
         Assertions.assertEquals(responseBody, expectedMsg);
     }
     @Test
@@ -246,8 +233,6 @@ class CarreraControllerTest {
 
         String responseBody = result.getResponse().getContentAsString();
         String expectedMsg = "El valor en la URL debe ser mayor a cero.";
-        System.out.println("Mensaje esperado: " + responseBody);
-        System.out.println("Mensaje recibida: " + expectedMsg);
         Assertions.assertTrue(responseBody.contains(expectedMsg));
     }
 }

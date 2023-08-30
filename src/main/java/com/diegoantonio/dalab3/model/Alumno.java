@@ -1,7 +1,6 @@
 package com.diegoantonio.dalab3.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

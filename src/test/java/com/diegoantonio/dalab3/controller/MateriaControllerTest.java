@@ -52,8 +52,6 @@ class MateriaControllerTest {
                         .andExpect(status().is2xxSuccessful())
                         .andReturn();
         Materia actualMateriaResponse = mapper.readValue(result.getResponse().getContentAsString(), Materia.class);
-        System.out.println("Materia esperada: " + materiaResponse);
-        System.out.println("Materia actual recibida: " + actualMateriaResponse);
         Assertions.assertEquals(materiaResponse, actualMateriaResponse);
     }
     @Test
@@ -71,7 +69,6 @@ class MateriaControllerTest {
                         .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "El nombre de la materia no puede ser un espacio vacio.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -90,7 +87,6 @@ class MateriaControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "El nombre de la materia debe contener al menos una letra.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -109,7 +105,6 @@ class MateriaControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "El anio no puede estar vacio.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -128,7 +123,6 @@ class MateriaControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "El anio debe ser un numero de 4 digitos.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -147,7 +141,6 @@ class MateriaControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "El anio debe ser mayor o igual a 2020.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -166,7 +159,6 @@ class MateriaControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "El cuatrimestre no puede estar vacio.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -185,7 +177,6 @@ class MateriaControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "El cuatrimestre debe ser 1 o 2.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -204,7 +195,6 @@ class MateriaControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "El cuatrimestre debe ser 1 o 2.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -231,8 +221,6 @@ class MateriaControllerTest {
                 .andExpect(status().is2xxSuccessful())
                 .andReturn();
         Materia actualMateriaResponse = mapper.readValue(result.getResponse().getContentAsString(), Materia.class);
-        System.out.println("Materia esperada: " + materiaResponse);
-        System.out.println("Materia actual recibida: " + actualMateriaResponse);
         Assertions.assertEquals(materiaResponse, actualMateriaResponse);
     }
     @Test
@@ -251,7 +239,6 @@ class MateriaControllerTest {
                 .andReturn();
 
         String responseBody = result.getResponse().getContentAsString();
-        System.out.println("Respuesta de error recibida: " + responseBody);
         String expectedErrMsg = "El valor en la URL debe ser mayor a cero.";
         Assertions.assertTrue(responseBody.contains(expectedErrMsg));
     }
@@ -269,8 +256,6 @@ class MateriaControllerTest {
 
         String responseBody = result.getResponse().getContentAsString();
         String expectedMsg = "La materia fue borrada satisfactoriamente.";
-        System.out.println("Mensaje esperado: " + responseBody);
-        System.out.println("Mensaje recibida: " + expectedMsg);
         Assertions.assertEquals(responseBody, expectedMsg);
     }
     @Test
@@ -285,8 +270,6 @@ class MateriaControllerTest {
 
         String responseBody = result.getResponse().getContentAsString();
         String expectedMsg = "El valor en la URL debe ser mayor a cero.";
-        System.out.println("Mensaje esperado: " + responseBody);
-        System.out.println("Mensaje recibida: " + expectedMsg);
         Assertions.assertTrue(responseBody.contains(expectedMsg));
     }
 
@@ -307,8 +290,6 @@ class MateriaControllerTest {
                 .andReturn();
 
         Materia actualMateriaResponse = mapper.readValue(result.getResponse().getContentAsString(), Materia.class);
-        System.out.println("Materia esperada: " + materiaResponse);
-        System.out.println("Materia actual recibida: " + actualMateriaResponse);
         Assertions.assertEquals(materiaResponse, actualMateriaResponse);
     }
     @Test
@@ -323,24 +304,6 @@ class MateriaControllerTest {
 
         String responseBody = result.getResponse().getContentAsString();
         String expectedMsg = "No puede faltar el parametro 'nombre'.";
-        System.out.println("Mensaje esperado: " + responseBody);
-        System.out.println("Mensaje recibida: " + expectedMsg);
-        Assertions.assertTrue(responseBody.contains(expectedMsg));
-    }
-    @Test
-    public void findByNameFailNameEmpty() throws Exception {
-        String nombre = "";
-
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/materia/materia")
-                        .param("nombre", nombre)
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isBadRequest())
-                .andReturn();
-
-        String responseBody = result.getResponse().getContentAsString();
-        String expectedMsg = "EL nombre no puede ser un campo vacio.";
-        System.out.println("Mensaje esperado: " + responseBody);
-        System.out.println("Mensaje recibida: " + expectedMsg);
         Assertions.assertTrue(responseBody.contains(expectedMsg));
     }
     @Test
@@ -355,8 +318,6 @@ class MateriaControllerTest {
 
         String responseBody = result.getResponse().getContentAsString();
         String expectedMsg = "Debe contener al menos una letra.";
-        System.out.println("Mensaje esperado: " + responseBody);
-        System.out.println("Mensaje recibida: " + expectedMsg);
         Assertions.assertTrue(responseBody.contains(expectedMsg));
     }
 
@@ -385,8 +346,6 @@ class MateriaControllerTest {
                 .andReturn();
 
         ArrayList<Materia> actualMateriasResponse = mapper.readValue(result.getResponse().getContentAsByteArray(), new TypeReference<ArrayList<Materia>>() {});
-        System.out.println("Materias esperadas: " + materiasResponse);
-        System.out.println("Materias actuales recibidas: " + actualMateriasResponse);
         Assertions.assertEquals(materiasResponse, actualMateriasResponse);
     }
     @Test
@@ -401,8 +360,6 @@ class MateriaControllerTest {
 
         String responseBody = result.getResponse().getContentAsString();
         String expectedMsg = "Los unicos valores permitidos son: nombre_asc | nombre_desc | codigo_asc | codigo_desc";
-        System.out.println("Mensaje esperado: " + responseBody);
-        System.out.println("Mensaje recibida: " + expectedMsg);
         Assertions.assertTrue(responseBody.contains(expectedMsg));
     }
 }

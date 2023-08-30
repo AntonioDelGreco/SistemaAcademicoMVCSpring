@@ -2,7 +2,6 @@ package com.diegoantonio.dalab3.controller.annotations;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
 import java.lang.annotation.*;

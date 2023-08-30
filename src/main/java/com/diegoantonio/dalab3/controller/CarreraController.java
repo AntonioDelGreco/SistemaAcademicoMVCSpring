@@ -21,13 +21,13 @@ public class CarreraController {
     private CarreraService carreraService;
 
     @PostMapping
-    public Carrera addCarrera(@RequestBody @Valid CarreraDTO carreraDTO) throws SaveException {
-        return carreraService.addCarrera(carreraDTO);
+    public ResponseEntity<Carrera> addCarrera(@RequestBody @Valid CarreraDTO carreraDTO) throws SaveException {
+        return ResponseEntity.ok(carreraService.addCarrera(carreraDTO));
     }
 
     @PutMapping("/{idCarrera}")
-    public Carrera updateCarrera(@PathVariable @ValidId Integer idCarrera, @RequestBody @Valid CarreraDTO carreraDTO) throws NotFoundException {
-        return carreraService.updateCarrera(idCarrera, carreraDTO);
+    public ResponseEntity<Carrera> updateCarrera(@PathVariable @ValidId Integer idCarrera, @RequestBody @Valid CarreraDTO carreraDTO) throws NotFoundException {
+        return ResponseEntity.ok(carreraService.updateCarrera(idCarrera, carreraDTO));
     }
 
     @DeleteMapping("/{idCarrera}")

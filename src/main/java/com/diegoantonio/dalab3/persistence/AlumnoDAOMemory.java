@@ -12,7 +12,7 @@ import java.util.ArrayList;
 @Repository
 public class AlumnoDAOMemory implements AlumnoDAO{
 
-    private static final ArrayList<Alumno> repoAlumnos = new ArrayList<Alumno>();
+    protected static final ArrayList<Alumno> repoAlumnos = new ArrayList<Alumno>();
 
     @Override
     public Alumno save(Alumno a) throws SaveException {

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 @Repository
 public class CarreraDAOMemory implements CarreraDAO{
 
-    private static final ArrayList<Carrera> repoCarrera = new ArrayList<Carrera>();
+    protected static final ArrayList<Carrera> repoCarrera = new ArrayList<Carrera>();
 
     @Override
     public Carrera save(Carrera c) throws SaveException {

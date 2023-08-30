@@ -12,7 +12,7 @@ import java.util.Comparator;
 @Repository
 public class MateriaDAOMemory implements MateriaDAO{
 
-    private static final ArrayList<Materia> repoMateria = new ArrayList<Materia>();
+    protected static final ArrayList<Materia> repoMateria = new ArrayList<Materia>();
 
     @Override
     public Materia save(Materia m) throws SaveException{

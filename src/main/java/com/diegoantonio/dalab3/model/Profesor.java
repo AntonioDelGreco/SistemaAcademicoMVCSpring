@@ -1,7 +1,8 @@
 package com.diegoantonio.dalab3.model;
 
-import java.util.ArrayList;
+import lombok.Data;
 
+@Data
 public class Profesor {
     private Integer id;
     private String nombre;
@@ -14,27 +15,7 @@ public class Profesor {
         setId();
     }
 
-    public Integer getId() {
-        return id;
-    }
-
     public void setId() {
         this.id = ++contador;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
     }
 }

@@ -23,16 +23,16 @@ public class AlumnoController {
     private AlumnoService alumnoService;
 
     @PostMapping
-    public Alumno addAlumno(@RequestBody @Valid AlumnoDTO alumnoDTO) throws SaveException {
-        return alumnoService.addAlumno(alumnoDTO);
+    public ResponseEntity<Alumno> addAlumno(@RequestBody @Valid AlumnoDTO alumnoDTO) throws SaveException {
+        return ResponseEntity.ok(alumnoService.addAlumno(alumnoDTO));
     }
 
     @PutMapping("/{idAlumno}")
-    public Alumno updateAlumno(
+    public ResponseEntity<Alumno> updateAlumno(
             @PathVariable @ValidId Integer idAlumno,
             @RequestBody @Valid AlumnoDTO alumnoDTO
     ) throws NotFoundException {
-        return alumnoService.updateAlumno(idAlumno, alumnoDTO);
+        return ResponseEntity.ok(alumnoService.updateAlumno(idAlumno, alumnoDTO));
     }
 
     @DeleteMapping("/{idAlumno}")
@@ -42,12 +42,12 @@ public class AlumnoController {
     }
 
     @PutMapping("/{idAlumno}/asignatura/{idAsignatura}")
-    public Alumno updateAsignatura(
+    public ResponseEntity<Alumno> updateAsignatura(
             @PathVariable @ValidId Integer idAlumno,
             @PathVariable @ValidId Integer idAsignatura,
             @RequestParam @ValidAsignatura String estado,
             @RequestParam @ValidNota Integer nota
     ) throws NotFoundException {
-        return alumnoService.updateAsignatura(idAlumno, idAsignatura, estado, nota);
+        return ResponseEntity.ok(alumnoService.updateAsignatura(idAlumno, idAsignatura, estado, nota));
     }
 }
